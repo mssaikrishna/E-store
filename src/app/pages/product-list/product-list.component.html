@@ -1,21 +1,30 @@
 <div class="container py-4">
-  <!-- Grid layout with Bootstrap classes -->
+  <!-- Search Input -->
+  <div class="mb-4">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search products..."
+      [(ngModel)]="searchTerm"
+    />
+  </div>
+
+  <!-- Product Grid -->
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div *ngFor="let product of products()" class="col">
-      <!-- Product card -->
+    <div *ngFor="let product of products() | search: searchTerm" class="col">
+      <!-- Product Card -->
       <div class="card h-100">
-        <img [src]="'src/assets/' + product.image" [alt]="product.name" class="card-img-top" />
+        <img [src]="'assets/' + product.image" [alt]="product.name" class="card-img-top" />
         <div class="card-body">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">${{ product.price }}</p>
           <app-primary-button
-          [label]="'Add to Cart'"
-          [itemCount]="itemCount()"
-          (btnClicked)="addToCart(product)">
-          ></app-primary-button>
+            [label]="'Add to Cart'"
+            [itemCount]="itemCount()"
+            (btnClicked)="addToCart(product)">
+          </app-primary-button>
         </div>
       </div>
     </div>
   </div>
 </div>
-

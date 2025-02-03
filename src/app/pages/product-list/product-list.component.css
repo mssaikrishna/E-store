@@ -1,0 +1,39 @@
+/* product-list.component.scss */
+.form-control {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  /* Custom Pagination Styles */
+.ngx-pagination {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+  
+    li {
+      margin: 0 5px;
+  
+      a {
+        color: #007bff;
+        text-decoration: none;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+  
+        &:hover {
+          background-color: #f8f9fa;
+        }
+      }
+  
+      &.current {
+        a {
+          background-color: #007bff;
+          color: #fff;
+          border-color: #007bff;
+        }
+      }
+    }
+  }
