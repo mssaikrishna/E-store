@@ -8,6 +8,7 @@
             <img [src]="'src/assets/' + item.image" alt="{{ item.name }}" class="img-thumbnail" style="width: 50px; height: 50px;">
             <strong>{{ item.name }}</strong> - ${{ item.price }}
           </div>
+          <button class="btn btn-danger" (click)="removeFromCart(item)">Remove</button>
           <span class="badge bg-primary rounded-pill">Qty: 1</span>
         </div>
       </div>

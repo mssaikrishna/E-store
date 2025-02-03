@@ -14,4 +14,8 @@ export class CartComponent {
 
   // Get cart items from the service
   cartItems: Signal<any[]> = this.cartService.getCartItems();
+
+  removeFromCart(product: any) {
+    this.cartService.removeFromCart(product);
+  }
 }
