@@ -1,0 +1,21 @@
+<div class="container py-4">
+  <!-- Grid layout with Bootstrap classes -->
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let product of products()" class="col">
+      <!-- Product card -->
+      <div class="card h-100">
+        <img [src]="'src/assets/' + product.image" [alt]="product.name" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">${{ product.price }}</p>
+          <app-primary-button
+          [label]="'Add to Cart'"
+          [itemCount]="itemCount()"
+          (btnClicked)="addToCart(product)">
+          ></app-primary-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

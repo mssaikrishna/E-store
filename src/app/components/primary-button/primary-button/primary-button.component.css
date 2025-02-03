@@ -1,0 +1,10 @@
+/* primary-button.component.css */
+.add-button {
+    background-color: blue;
+    color: white;
+  }
+  
+  .remove-button {
+    background-color: red;
+    color: white;
+  }
