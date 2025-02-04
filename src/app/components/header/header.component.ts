@@ -19,7 +19,7 @@ export class HeaderComponent {
   cartLabel: Signal<string> = computed(() => `Cart (${this.cartService.getCartItemCount()()})`);
 
   goToCart() {
-    this.router.navigate(['/cart']);
+    this.router.navigate(['/shop/cart']);
   }
 
   rederict(){
