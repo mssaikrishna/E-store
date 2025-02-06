@@ -14,6 +14,15 @@
       </div>
     </div>
   
+    <div class="d-flex justify-content-center mt-4">
+      <button 
+        *ngIf="hasItems()"
+        (click)="proceedToCheckout()"
+        class="btn btn-primary btn-lg">
+        Proceed to Checkout
+      </button>
+    </div>
+  
     <ng-template #emptyCart>
       <p class="text-muted">Your cart is empty.</p>
     </ng-template>

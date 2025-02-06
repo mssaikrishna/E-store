@@ -25,4 +25,8 @@ export class CartService {
   addToCart(product: any) {
     this.cartItems.update((currentItems: any[]) => [...currentItems, product]);
   }
+
+  clearCart() {
+    this.cartItems.set([]); // Reset cart items to empty array
+  }
 }

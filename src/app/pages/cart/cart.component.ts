@@ -1,6 +1,7 @@
-import { Component, inject, Signal } from '@angular/core';
+import { Component, inject, Signal, computed } from '@angular/core';
 import { CartService } from '../../../services/cart.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,11 +12,17 @@ import { CommonModule } from '@angular/common';
 })
 export class CartComponent {
   private cartService = inject(CartService);
+  private router = inject(Router);
 
   // Get cart items from the service
   cartItems: Signal<any[]> = this.cartService.getCartItems();
+  hasItems = computed(() => this.cartItems().length > 0);
 
   removeFromCart(product: any) {
     this.cartService.removeFromCart(product);
+  }
+
+  proceedToCheckout() {
+    this.router.navigate(['/shop/checkout']);
   }
 }
