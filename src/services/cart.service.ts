@@ -6,7 +6,7 @@ import { Signal, signal } from '@angular/core';
 })
 export class CartService {
   // Create a signal to hold the cart items
-  private cartItems = signal<any[]>([]); // Explicitly define the type as `Signal<any[]>`
+  private cartItems = signal<any[]>([]); 
 
   // Method to get the cart items
   getCartItems() {

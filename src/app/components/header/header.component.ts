@@ -1,6 +1,5 @@
 import { Component,computed, inject,Signal } from '@angular/core';
-import { MockDataService } from '../../../services/data.service';
-import { RouterLink } from '@angular/router';
+// import { MockDataService } from '../../../services/data.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
 import { PrimaryButtonComponent } from "../primary-button/primary-button/primary-button.component";
@@ -12,7 +11,7 @@ import { PrimaryButtonComponent } from "../primary-button/primary-button/primary
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  dataService = inject(MockDataService);
+  // dataService = inject(MockDataService);
   private cartService = inject(CartService);
   private router = inject(Router);
 

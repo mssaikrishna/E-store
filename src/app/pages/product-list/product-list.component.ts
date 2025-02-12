@@ -35,7 +35,6 @@ export class ProductListComponent {
   // filteredProducts = signal<any[]>(this.products());
 
   // constructor() {
-  //   // React to search input changes
   //   this.searchControl.valueChanges
   //     .pipe(
   //       debounceTime(300), // Wait for 300ms after the user stops typing

@@ -1,51 +1,48 @@
 <div class="container mt-4">
-    <h2 class="text-center mb-4">Checkout</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form (ngSubmit)="onSubmit()">
-          <!-- Address Field -->
-          <div class="mb-3">
-            <label for="address" class="form-label">Delivery Address</label>
-            <textarea
-              class="form-control"
-              id="address"
-              [(ngModel)]="address"
-              name="address"
-              rows="3"
-              required
-              [class.is-invalid]="addressError"
-              (input)="validateAddress()"
-            ></textarea>
-            <div *ngIf="addressError" class="invalid-feedback">
-              {{ addressError }}
-            </div>
+  <h2 class="text-center mb-4">Checkout</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        <!-- Address Field -->
+        <div class="mb-3">
+          <label for="address" class="form-label">Delivery Address</label>
+          <textarea
+            class="form-control"
+            id="address"
+            formControlName="address"
+            rows="3"
+            required
+            [class.is-invalid]="address?.touched && address?.invalid"
+          ></textarea>
+          <div *ngIf="address?.touched && address?.invalid" class="invalid-feedback">
+            Address is required.
           </div>
-  
-          <!-- Phone Field -->
-          <div class="mb-3">
-            <label for="phone" class="form-label">Phone Number</label>
-            <input
-              type="tel"
-              class="form-control"
-              id="phone"
-              [(ngModel)]="phone"
-              name="phone"
-              required
-              [class.is-invalid]="phoneError"
-              (input)="validatePhone()"
-            />
-            <div *ngIf="phoneError" class="invalid-feedback">
-              {{ phoneError }}
-            </div>
+        </div>
+
+        <!-- Phone Field -->
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone"
+            formControlName="phone"
+            required
+            [class.is-invalid]="phone?.touched && phone?.invalid"
+          />
+          <div *ngIf="phone?.touched && phone?.invalid" class="invalid-feedback">
+            <div *ngIf="phone?.hasError('required')">Phone number is required.</div>
+            <div *ngIf="phone?.hasError('pattern')">Phone number must be 10 digits.</div>
           </div>
-  
-          <!-- Submit Button -->
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary btn-lg">
-              Place Order
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-lg" [disabled]="checkoutForm.invalid">
+            Place Order
+          </button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
