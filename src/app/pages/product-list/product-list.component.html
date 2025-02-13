@@ -1,27 +1,46 @@
-<div class="container py-4">
-  <!-- Search Input -->
-  <div class="mb-4">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Search products..."
-      [(ngModel)]="searchTerm"
-    />
+<div class="container py-4 responsive">
+  <div class="row mb-4">
+    <!-- Search Input -->
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search products..."
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+    <!-- Category Filter -->
+    <div class="col-md-6">
+      <select class="form-select" [(ngModel)]="filterTerm">
+        <option value="">All Categories</option>
+        <option *ngFor="let category of categories()" [value]="category.name">
+          {{category.name}}
+        </option>
+      </select>
+    </div>
   </div>
 
   <!-- Product Grid -->
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div *ngFor="let product of products() | search: searchTerm" class="col">
+    <div *ngFor="let product of (products() | search : searchTerm | filter : filterTerm)" class="col">
       <!-- Product Card -->
       <div class="card h-100">
-        <img [src]="'assets/' + product.image" [alt]="product.name" class="card-img-top" />
+        <img
+          [src]="product.images[0]"
+          [alt]="product.title"
+          class="card-img-top"
+          *ngIf="product.images.length > 0"
+        />
         <div class="card-body">
-          <h5 class="card-title">{{ product.name }}</h5>
+          <h5 class="card-title">{{ product.title }}</h5>
           <p class="card-text">${{ product.price }}</p>
+          <p class="card-text">${{ product.description }}</p>
           <app-primary-button
+          class="buy-button"
             [label]="'Add to Cart'"
             [itemCount]="itemCount()"
-            (btnClicked)="addToCart(product)">
+            (btnClicked)="addToCart(product)"
+          >
           </app-primary-button>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { Component, inject, Signal, computed } from '@angular/core';
-import { CartService } from '../../../services/cart.service';
+import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,6 @@ export class CartComponent {
   removeFromCart(product: any) {
     this.cartService.removeFromCart(product);
   }
-
   proceedToCheckout() {
     this.router.navigate(['/shop/checkout']);
   }

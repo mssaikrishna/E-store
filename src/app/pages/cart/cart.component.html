@@ -1,30 +1,41 @@
 <div class="container py-4">
-    <h2 class="mb-4">Shopping Cart</h2>
-  
-    <div *ngIf="cartItems().length > 0; else emptyCart">
-      <div class="list-group">
-        <div *ngFor="let item of cartItems()" class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <img [src]="'src/assets/' + item.image" alt="{{ item.name }}" class="img-thumbnail" style="width: 50px; height: 50px;">
-            <strong>{{ item.name }}</strong> - ${{ item.price }}
-          </div>
-          <button class="btn btn-danger" (click)="removeFromCart(item)">Remove</button>
-          <span class="badge bg-primary rounded-pill">Qty: 1</span>
+  <h2 class="mb-4">Shopping Cart</h2>
+
+  <div *ngIf="cartItems().length > 0; else emptyCart">
+    <div class="list-group">
+      <div
+        *ngFor="let item of cartItems()"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <div>
+          <img
+            [src]="item.images[0]"
+            [alt]="item.title"
+            class="img-thumbnail"
+            style="width: 50px; height: 50px"
+            *ngIf="item.images && item.images.length > 0"
+          />
+          <strong>{{ item.name }}</strong> - ${{ item.price }}
         </div>
+        <button class="btn btn-danger" (click)="removeFromCart(item)">
+          Remove
+        </button>
+        <span class="badge bg-primary rounded-pill">Qty: 1</span>
       </div>
     </div>
-  
-    <div class="d-flex justify-content-center mt-4">
-      <button 
-        *ngIf="hasItems()"
-        (click)="proceedToCheckout()"
-        class="btn btn-primary btn-lg">
-        Proceed to Checkout
-      </button>
-    </div>
-  
-    <ng-template #emptyCart>
-      <p class="text-muted">Your cart is empty.</p>
-    </ng-template>
   </div>
-  
+
+  <div class="d-flex justify-content-center mt-4">
+    <button
+      *ngIf="hasItems()"
+      (click)="proceedToCheckout()"
+      class="btn btn-primary btn-lg"
+    >
+      Proceed to Checkout
+    </button>
+  </div>
+
+  <ng-template #emptyCart>
+    <p class="text-muted">Your cart is empty.</p>
+  </ng-template>
+</div>

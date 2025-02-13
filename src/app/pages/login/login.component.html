@@ -1,0 +1,89 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="text-center mb-4">Login</h2>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                [ngClass]="{ 'is-invalid': email?.errors && email?.touched }"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="email?.errors?.['required'] && email?.touched"
+              >
+                Email is required
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="email?.errors?.['email'] && email?.touched"
+              >
+                Please enter a valid email
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  class="form-control"
+                  id="password"
+                  formControlName="password"
+                  [ngClass]="{
+                    'is-invalid': password?.errors && password?.touched
+                  }"
+                />
+                <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="showPassword = !showPassword"
+              >
+                <i
+                  class="bi"
+                  [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"
+                ></i>
+              </button>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="password?.errors?.['required'] && password?.touched"
+                >
+                  Password is required
+                </div>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="password?.errors?.['minlength'] && password?.touched"
+                >
+                  Password must be at least 6 characters
+                </div>
+              </div>
+            </div>
+
+            <div class="d-grid">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="loginForm.invalid"
+              >
+                Login
+              </button>
+            </div>
+
+            <div class="text-center mt-3">
+              <p>
+                Don't have an account?
+                <a [routerLink]="['/signup']" class="text-primary">Sign up</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

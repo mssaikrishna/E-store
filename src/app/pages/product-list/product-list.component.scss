@@ -1,0 +1,17 @@
+@import '../../../styles/mixins';
+
+.product-container {
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card {
+  @include responsive(mobile) {
+    width: 100%;
+  }
+}
+
+.buy-button {
+  @include button-style(#007bff, white);
+} 
