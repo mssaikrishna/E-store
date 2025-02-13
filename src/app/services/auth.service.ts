@@ -11,7 +11,7 @@ export class AuthService {
   // private token = signal<string | null>(localStorage.getItem('token'));
 
   private token: string | null = null;
-  private apiUrl = 'https://api.escuelajs.co/api/v1/users';
+  private apiUrl = 'https://api.escuelajs.co/api/v1/auth/login';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -26,7 +26,7 @@ export class AuthService {
   // }
 
   login(email: string, password: string) {
-    return this.http.post<{ access_token: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
+    return this.http.post<{ access_token: string }>(this.apiUrl, { email, password }).pipe(
       map((response) => {
         this.token = response.access_token; // Store the token
         localStorage.setItem('token', this.token); // Store token in localStorage
