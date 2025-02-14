@@ -12,7 +12,7 @@
             formControlName="address"
             rows="3"
             required
-            [class.is-invalid]="address?.touched && address?.invalid"
+            [ngClass]="{ 'is-invalid': address?.touched && address?.invalid }"
           ></textarea>
           <div *ngIf="address?.touched && address?.invalid" class="invalid-feedback">
             Address is required.
@@ -28,7 +28,7 @@
             id="phone"
             formControlName="phone"
             required
-            [class.is-invalid]="phone?.touched && phone?.invalid"
+            [ngClass]="{'is-invalid' : phone?.touched && phone?.invalid}"
           />
           <div *ngIf="phone?.touched && phone?.invalid" class="invalid-feedback">
             <div *ngIf="phone?.hasError('required')">Phone number is required.</div>

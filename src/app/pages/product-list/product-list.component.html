@@ -14,7 +14,7 @@
       <select class="form-select" [(ngModel)]="filterTerm">
         <option value="">All Categories</option>
         <option *ngFor="let category of categories()" [value]="category.name">
-          {{category.name}}
+          {{ category.name }}
         </option>
       </select>
     </div>
@@ -22,7 +22,12 @@
 
   <!-- Product Grid -->
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div *ngFor="let product of (products() | search : searchTerm | filter : filterTerm)" class="col">
+    <div
+      *ngFor="
+        let product of products() | search : searchTerm | filter : filterTerm
+      "
+      class="col"
+    >
       <!-- Product Card -->
       <div class="card h-100">
         <img
@@ -36,7 +41,7 @@
           <p class="card-text">${{ product.price }}</p>
           <p class="card-text">${{ product.description }}</p>
           <app-primary-button
-          class="buy-button"
+            class="buy-button"
             [label]="'Add to Cart'"
             [itemCount]="itemCount()"
             (btnClicked)="addToCart(product)"
