@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   imports: [CommonModule, ReactiveFormsModule,RouterModule],
 })
 export class LoginComponent {

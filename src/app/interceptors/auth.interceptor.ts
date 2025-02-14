@@ -24,7 +24,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         // Handle 401 Unauthorized
         if (error.status === 401) {
           authService.logout();
-          alert("Invalid")
           router.navigate(['/login']);
         }
         return throwError(() => error);

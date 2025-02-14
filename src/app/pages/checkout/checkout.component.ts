@@ -39,12 +39,10 @@ export class CheckoutComponent {
 
   onSubmit() {
     if (this.checkoutForm.valid) {
-      // Process the form submission
       alert('Order placed successfully!');
       this.cartService.clearCart(); // Clear the cart
       this.router.navigate(['/shop']); // Navigate to the shop page
     } else {
-      // Trigger validation messages
       this.checkoutForm.markAllAsTouched();
     }
   }

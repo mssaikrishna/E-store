@@ -15,3 +15,7 @@
 .buy-button {
   @include button-style(#007bff, white);
 } 
+
+.clr{
+    @include background-color
+}

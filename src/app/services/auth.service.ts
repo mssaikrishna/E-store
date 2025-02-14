@@ -63,8 +63,4 @@ export class AuthService {
     return this.token;
   }
 
-
-  // getToken() {
-  //   return this.token();
-  // }
 }
