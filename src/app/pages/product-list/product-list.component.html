@@ -36,24 +36,26 @@
           class="card-img-top"
           *ngIf="product.images.length > 0"
         />
-        <div class="card-body">
+        <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{ product.title }}</h5>
           <p class="card-text">Price :-${{ product.price }}</p>
           <p class="card-text">Description -{{ product.description }}</p>
-          <app-primary-button
-            class="buy-button"
-            [label]="'Add to Cart'"
-            [itemCount]="itemCount()"
-            (btnClicked)="addToCart(product)"
-          >
-          </app-primary-button>
+          <div class="d-grid gap-2">
+            <app-primary-button
+              class="buy-button"
+              [label]="'Add to Cart'"
+              [itemCount]="itemCount()"
+              (btnClicked)="addToCart(product)"
+            >
+            </app-primary-button>
 
-          <button
-          class="btn btn-outline-primary mt-2"
-          (click)="viewDetails(product.id)"
-        >
-          View Details
-        </button>
+            <button
+              class="btn btn-outline-primary mt-2"
+              (click)="viewDetails(product.id)"
+            >
+              View Details
+            </button>
+          </div>
         </div>
       </div>
     </div>
