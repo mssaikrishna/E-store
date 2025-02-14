@@ -92,4 +92,8 @@ export class ProductListComponent {
     ));
     return Array.from(uniqueCategories).map(cat => JSON.parse(cat));
   });
+
+  viewDetails(productId: number) {
+    this.router.navigate(['/shop/product-details', productId]);
+  }
 }
