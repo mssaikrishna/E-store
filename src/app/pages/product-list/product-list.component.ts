@@ -10,7 +10,6 @@ import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { PrimaryButtonComponent } from '../../components/primary-button/primary-button/primary-button.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-// import { debounceTime, distinctUntilChanged, startWith, map } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../../pipes/search.pipe';
 import { FilterPipe } from '../../pipes/filter.pipe';
@@ -38,11 +37,6 @@ export class ProductListComponent {
   itemCount: Signal<number> = this.cartService.getCartItemCount();
   router = inject(Router);
 
-  // Products Signal
-  // products: Signal<any[]> = signal(this.dataService.getProducts());
-
-  // products: WritableSignal<any[]> = signal([]);
-
   searchTerm: string = '';
   filterTerm: string = '';
 
@@ -52,32 +46,6 @@ export class ProductListComponent {
     ),
     { initialValue: [] }
   );
-
-  // // Search Control
-  // searchControl = new FormControl('');
-
-  // // Filtered Products Signal
-  // filteredProducts = signal<any[]>(this.products());
-
-  // constructor() {
-  //   this.searchControl.valueChanges
-  //     .pipe(
-  //       debounceTime(300), // Wait for 300ms after the user stops typing
-  //       distinctUntilChanged(), // Only emit if the value has changed
-  //       startWith('') // Start with an empty string
-  //     )
-  //     .subscribe((searchTerm) => {
-  //       this.filterProducts(searchTerm || '');
-  //     });
-  // }
-
-  // Filter products based on search term
-  // filterProducts(searchTerm: string) {
-  //   const filtered = this.products().filter((product) =>
-  //     product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-  //   this.filteredProducts.set(filtered);
-  // }
 
   // Add to Cart
   addToCart(product: any) {
