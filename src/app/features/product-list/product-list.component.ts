@@ -11,8 +11,8 @@ import { CommonModule } from '@angular/common';
 import { PrimaryButtonComponent } from '../../shared/components/primary-button/primary-button/primary-button.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { SearchPipe } from '../../core/pipes/search.pipe';
-import { FilterPipe } from '../../core/pipes/filter.pipe';
+import { SearchPipe } from '../../shared/pipes/search.pipe';
+import { FilterPipe } from '../../shared/pipes/filter.pipe';
 import { toSignal } from '@angular/core/rxjs-interop'; // Convert observable to signal
 import { catchError, of } from 'rxjs';
 
