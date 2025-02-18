@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ProductListComponent } from './pages/product-list/product-list.component';
-import { CartComponent } from './pages/cart/cart.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { ProductListComponent } from './features/product-list/product-list.component';
+import { CartComponent } from './features/cart/cart.component';
+import { CheckoutComponent } from './features/checkout/checkout.component';
+import { ProductDetailsComponent } from './features/product-details/product-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

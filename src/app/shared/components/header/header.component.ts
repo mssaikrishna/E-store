@@ -1,8 +1,8 @@
 import { Component,computed, inject,Signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../../core/services/cart.service';
 import { PrimaryButtonComponent } from "../primary-button/primary-button/primary-button.component";
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

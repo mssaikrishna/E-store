@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { MockDataService } from '../../services/data.service';
+import { MockDataService } from '../../core/services/data.service';
 
 @Component({
   selector: 'app-product-details',

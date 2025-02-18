@@ -1,5 +1,5 @@
 import { Component, inject, Signal, computed } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../core/services/cart.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 

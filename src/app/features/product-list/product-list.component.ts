@@ -5,14 +5,14 @@ import {
   computed,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { MockDataService } from '../../services/data.service';
-import { CartService } from '../../services/cart.service';
+import { MockDataService } from '../../core/services/data.service';
+import { CartService } from '../../core/services/cart.service';
 import { CommonModule } from '@angular/common';
-import { PrimaryButtonComponent } from '../../components/primary-button/primary-button/primary-button.component';
+import { PrimaryButtonComponent } from '../../shared/components/primary-button/primary-button/primary-button.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { SearchPipe } from '../../pipes/search.pipe';
-import { FilterPipe } from '../../pipes/filter.pipe';
+import { SearchPipe } from '../../core/pipes/search.pipe';
+import { FilterPipe } from '../../core/pipes/filter.pipe';
 import { toSignal } from '@angular/core/rxjs-interop'; // Convert observable to signal
 import { catchError, of } from 'rxjs';
 
