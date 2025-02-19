@@ -29,7 +29,14 @@
       class="col"
     >
       <!-- Product Card -->
-      <div class="card h-100">
+
+      <app-product-card
+      [product]="product"
+      (addToCart)="addToCart($event)"
+      (viewDetails)="viewDetails($event)"
+    >
+    </app-product-card>
+      <!-- <div class="card h-100">
         <img
           [src]="product.images[0]"
           [alt]="product.title"
@@ -57,7 +64,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

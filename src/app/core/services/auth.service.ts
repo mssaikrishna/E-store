@@ -19,22 +19,40 @@ export class AuthService {
 
   authStatus$ = this.isAuthenticated.asObservable();
 
+  // login(email: string, password: string) {
+  //   return this.http.post<{ access_token: string }>(this.apiUrl, { email, password }).pipe(
+  //     map((response) => {
+  //       this.token = response.access_token;
+  //       localStorage.setItem('token', this.token);
+  //       this.isAuthenticated.next(true);  // Emit new authentication state
+  //       return true;
+  //     }),
+  //     catchError(() => {
+  //       this.token = null;
+  //       localStorage.removeItem('token');
+  //       this.isAuthenticated.next(false);  // Notify subscribers of logout state
+  //       return of(false);
+  //     })
+  //   );
+  // }
+
   login(email: string, password: string) {
-    return this.http.post<{ access_token: string }>(this.apiUrl, { email, password }).pipe(
-      map((response) => {
-        this.token = response.access_token;
-        localStorage.setItem('token', this.token);
-        this.isAuthenticated.next(true);  // Emit new authentication state
-        return true;
-      }),
-      catchError(() => {
-        this.token = null;
-        localStorage.removeItem('token');
-        this.isAuthenticated.next(false);  // Notify subscribers of logout state
-        return of(false);
-      })
-    );
+    // Get users from local storage
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+  
+    // Find matching user
+    const user = users.find((user: any) => user.email === email && user.password === password);
+  
+    if (user) {
+      this.token = 'mock_token'; // Generate a mock token
+      localStorage.setItem('token', this.token);
+      this.isAuthenticated.next(true);
+      return of(true); // Return observable of success
+    } else {
+      return of(false); // Return observable of failure
+    }
   }
+  
 
 
 
@@ -60,6 +78,14 @@ export class AuthService {
     this.isAuthenticated.next(false);
     this.router.navigate(['/login']);
   }
+  
+
+  // logout() {
+  //   this.token = null;
+  //   localStorage.removeItem('token');
+  //   this.isAuthenticated.next(false);
+  //   this.router.navigate(['/login']);
+  // }
 
   // logout() {
   //   this.token = null;

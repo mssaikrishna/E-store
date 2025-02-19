@@ -4,10 +4,11 @@ import { CartService } from '../../../core/services/cart.service';
 import { PrimaryButtonComponent } from "../primary-button/primary-button/primary-button.component";
 import { AuthService } from '../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
+import { TextColorDirective } from '../../directive/text-color.directive';
 
 @Component({
   selector: 'app-header',
-  imports: [PrimaryButtonComponent,CommonModule],
+  imports: [PrimaryButtonComponent,CommonModule,TextColorDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

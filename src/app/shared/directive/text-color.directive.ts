@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appTextColor]'
+  selector: '[appTextColor]',
+  standalone: true, 
 })
 export class TextColorDirective implements OnInit {
   @Input() appTextColor = 'blue'; // Default color

@@ -15,6 +15,7 @@ import { SearchPipe } from '../../shared/pipes/search.pipe';
 import { FilterPipe } from '../../shared/pipes/filter.pipe';
 import { toSignal } from '@angular/core/rxjs-interop'; // Convert observable to signal
 import { catchError, of } from 'rxjs';
+import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
 
 @Component({
   selector: 'app-product-list',
@@ -23,11 +24,11 @@ import { catchError, of } from 'rxjs';
   standalone: true,
   imports: [
     CommonModule,
-    PrimaryButtonComponent,
     ReactiveFormsModule,
     FormsModule,
     SearchPipe,
-    FilterPipe
+    FilterPipe,
+    ProductCardComponent
   ], // Add ReactiveFormsModule
 })
 export class ProductListComponent {

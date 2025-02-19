@@ -23,7 +23,7 @@ export class LoginComponent {
   constructor() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6),]]
+      password: ['', [Validators.required, Validators.minLength(6),passwordValidator]]
     });
   }
 
@@ -51,7 +51,7 @@ export class LoginComponent {
             localStorage.setItem('token', this.authService.getToken()!); // Store token
             this.router.navigate(['/shop']); // Navigate to shop
           } else {
-            alert('Invalid credentials'); // Show error message
+            alert('User does not exist'); // Show error message
           }
         },
         (error) => {
