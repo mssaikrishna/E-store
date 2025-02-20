@@ -82,6 +82,7 @@ export class AdminDashboardComponent {
 
   deleteProduct(productId: number) {
     this.products = this.products.filter((product) => product.id !== productId);
+    localStorage.setItem('products', JSON.stringify(this.products));
   }
 
   // Promote a user to admin
