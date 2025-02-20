@@ -4,7 +4,7 @@ import { CartService } from '../../../core/services/cart.service';
 import { PrimaryButtonComponent } from "../primary-button/primary-button/primary-button.component";
 import { AuthService } from '../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
-import { TextColorDirective } from '../../directive/text-color.directive';
+import { TextColorDirective } from '../../directive/styleDirective/text-color.directive';
 
 @Component({
   selector: 'app-header',
@@ -25,6 +25,14 @@ export class HeaderComponent {
 
   rederict(){
     this.router.navigate(['/shop']);
+  }
+
+  isAdmin(): boolean {
+    return this.authService.getRole() === 'admin';
+  }
+
+  goToAdmin(){
+    this.router.navigate(['/admin']);
   }
 
   logout() {

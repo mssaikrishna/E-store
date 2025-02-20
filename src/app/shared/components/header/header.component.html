@@ -10,6 +10,12 @@
     My Store
   </button>
 
+  <div>
+    <li class="nav-item" *ngIf="isAdmin()">
+      <a class="nav-link" (click)="goToAdmin()">Admin Dashboard</a>
+    </li>
+  </div>
+
   <div class="d-flex gap-3">
     <app-primary-button
       [label]="cartLabel()"

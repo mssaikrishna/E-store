@@ -1,0 +1,82 @@
+<div class="container mt-4">
+  <h2>Admin Dashboard</h2>
+
+  <!-- User Management -->
+  <div class="card mt-4">
+    <div class="card-header">
+      <h4>User Management</h4>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <button
+                *ngIf="user.role === 'user'"
+                class="btn btn-sm btn-success me-2"
+                (click)="promoteToAdmin(user.email)"
+              >
+                Promote to Admin
+              </button>
+              <button
+                *ngIf="user.role === 'admin'"
+                class="btn btn-sm btn-warning me-2"
+                (click)="demoteToUser(user.email)"
+              >
+                Demote to User
+              </button>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="deleteUser(user.email)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <h4>Product Management</h4>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.title }}</td>
+            <td>${{ product.price }}</td>
+            <td>{{ product.category.name }}</td>
+            <td>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="deleteProduct(product.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

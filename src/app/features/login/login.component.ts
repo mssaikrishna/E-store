@@ -11,7 +11,7 @@ import { passwordValidator } from '../../shared/validator/validators';
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [CommonModule, ReactiveFormsModule,RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -23,43 +23,27 @@ export class LoginComponent {
   constructor() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6),passwordValidator]]
+      password: ['', [Validators.required, Validators.minLength(6),passwordValidator]],
     });
   }
 
-  get email() { return this.loginForm.get('email'); }
-  get password() { return this.loginForm.get('password'); }
-
-  // onSubmit() {
-  //   if (this.loginForm.valid) {
-  //     const { email, password } = this.loginForm.value;
-  //     if (this.authService.login(email, password)) {
-  //       this.router.navigate(['/shop']);
-  //     } else {
-  //       alert('Invalid credentials');
-  //     }
-  //   }
-  // }
+  get email() {
+    return this.loginForm.get('email');
+  }
+  get password() {
+    return this.loginForm.get('password');
+  }
 
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-  
-      this.authService.login(email, password).subscribe(
-        (isLoggedIn) => {
-          if (isLoggedIn) {
-            localStorage.setItem('token', this.authService.getToken()!); // Store token
-            this.router.navigate(['/shop']); // Navigate to shop
-          } else {
-            alert('User does not exist'); // Show error message
-          }
-        },
-        (error) => {
-          console.error('Login error:', error);
-          alert('An error occurred while logging in.');
-        }
-      );
+      const isLoggedIn = this.authService.login(email, password); // Authenticate from localStorage
+
+      if (isLoggedIn) {
+        this.router.navigate(['/shop']); // Navigate to shop
+      } else {
+        alert('Invalid credentials'); // Show error message
+      }
     }
   }
-  
 }

@@ -4,6 +4,14 @@
       <div class="card">
         <div class="card-body">
           <h2 class="text-center mb-4">Sign Up</h2>
+
+          <ng-container appDynamicHost></ng-container>
+          <!-- <div appDynamicHost></div> -->
+
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+          </div>
+
           <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
@@ -64,43 +72,61 @@
                 </div>
               </div>
             </div>
+
             <div class="mb-3">
-              <label for="confirmPassword" class="form-label"
-                >Confirm Password</label
-              >
+              <label for="confirmPassword" class="form-label">Confirm Password</label>
               <div class="input-group">
                 <input
-                  [type]="showConfirmPassword ? 'text' : 'password'"
-                  class="form-control"
-                  id="confirmPassword"
-                  formControlName="confirmPassword"
-                  [ngClass]="{
-                    'is-invalid':
-                      confirmPassword?.errors && confirmPassword?.touched
-                  }"
-                />
-                <button
-                  class="btn btn-outline-secondary"
-                  type="button"
-                  (click)="showConfirmPassword = !showConfirmPassword"
-                >
-                  <i
-                    class="bi"
-                    [ngClass]="showConfirmPassword ? 'bi-eye-slash' : 'bi-eye'"
-                  ></i>
-                </button>
-                <div
-                  class="invalid-feedback"
-                  *ngIf="confirmPassword?.errors?.['required'] && confirmPassword?.touched"
-                >
-                  Please confirm your password
-                </div>
-                <div
-                  class="invalid-feedback"
-                  *ngIf="signupForm.errors?.['passwordMismatch']"
-                >
-                  Passwords do not match
-                </div>
+                [type]="showConfirmPassword ? 'text' : 'password'"
+                class="form-control"
+                id="confirmPassword"
+                formControlName="confirmPassword"
+                [ngClass]="{
+                  'is-invalid':
+                    confirmPassword?.errors && confirmPassword?.touched
+                }"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="showConfirmPassword = !showConfirmPassword"
+              >
+                <i
+                  class="bi"
+                  [ngClass]="showConfirmPassword ? 'bi-eye-slash' : 'bi-eye'"
+                ></i>
+              </button>
+              <div
+                class="invalid-feedback"
+                *ngIf="confirmPassword?.errors?.['required'] && confirmPassword?.touched"
+              >
+                Confirm Password is required
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="signupForm.errors?.['passwordMismatch'] && confirmPassword?.touched"
+              >
+                Passwords do not match
+              </div>
+            </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="role" class="form-label">Role</label>
+              <select
+                class="form-select"
+                id="role"
+                formControlName="role"
+                [ngClass]="{ 'is-invalid': role?.errors && role?.touched }"
+              >
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+              <div
+                class="invalid-feedback"
+                *ngIf="role?.errors?.['required'] && role?.touched"
+              >
+                Role is required
               </div>
             </div>
 
