@@ -6,6 +6,7 @@ import { CartComponent } from './features/cart/cart.component';
 import { CheckoutComponent } from './features/checkout/checkout.component';
 import { ProductDetailsComponent } from './features/product-details/product-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddProductComponent } from './shared/components/add-product/add-product.component';
 
 @NgModule({
   declarations: [],
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       { path: '', component: ProductListComponent },
       { path: 'cart', component: CartComponent },
       { path: 'checkout', component: CheckoutComponent},
+      { path: 'addproduct', component: AddProductComponent},
       { path: 'product-details/:id', component: ProductDetailsComponent },
     ])
   ]

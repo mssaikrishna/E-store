@@ -1,6 +1,16 @@
 <div class="container mt-4">
   <h2>Admin Dashboard</h2>
 
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <h4>Add Product</h4>
+    </div>
+    <div class="card-body">
+      <app-add-product (productAdded)="onProductAdded()"></app-add-product>
+    </div>
+  </div>
+
   <!-- User Management -->
   <div class="card mt-4">
     <div class="card-header">
@@ -65,7 +75,7 @@
           <tr *ngFor="let product of products">
             <td>{{ product.title }}</td>
             <td>${{ product.price }}</td>
-            <td>{{ product.category.name }}</td>
+            <td>{{ product.category }}</td>
             <td>
               <button
                 class="btn btn-sm btn-danger"

@@ -61,15 +61,6 @@ export class SignupComponent {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
-  // onSubmit() {
-  //   if (this.signupForm.valid) {
-  //     const { email, password,role } = this.signupForm.value;
-  //     this.authService.signup(email, password,role); // Save user to localStorage
-  //     this.showAlert('User registered successfully!', 'success');
-  //     this.router.navigate(['/login']);
-  //   }
-  // }
-
   onSubmit() {
     if (this.signupForm.valid) {
       const { email, password, role } = this.signupForm.value;
@@ -100,10 +91,6 @@ export class SignupComponent {
       }
     }
   }
-
-  // showAlert(message: string, type: string) {
-  //   alert(message); // Replace with a proper alert/notification system
-  // }
 
   showAlert(message: string, type: 'success' | 'danger' | 'warning') {
     debugger

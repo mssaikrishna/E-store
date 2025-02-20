@@ -1,0 +1,56 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="container mt-4 p-4 border rounded shadow-sm bg-light">
+    <div class="row g-3">
+      <div *ngFor="let field of formConfig" class="col-md-6">
+        <label class="form-label fw-bold">{{ field.label }}</label>
+  
+        <!-- Text & Number Input -->
+        <input
+          *ngIf="field.type === 'text' || field.type === 'number'"
+          [type]="field.type"
+          [formControlName]="field.name"
+          [placeholder]="field.placeholder"
+          class="form-control"
+        />
+  
+        <!-- Textarea Input -->
+        <textarea
+          *ngIf="field.type === 'textarea'"
+          [formControlName]="field.name"
+          [placeholder]="field.placeholder"
+          class="form-control"
+          rows="3"
+        ></textarea>
+  
+        <!-- Select Input -->
+        <select *ngIf="field.type === 'select'" [formControlName]="field.name" class="form-select">
+          <option *ngFor="let option of field.options" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+  
+        <!-- Validation Errors -->
+        <div *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
+          <small *ngIf="form.get(field.name)?.errors?.['required']" class="text-danger">
+            {{ field.label }} is required.
+          </small>
+          <small *ngIf="form.get(field.name)?.errors?.['minlength']" class="text-danger">
+            Minimum length is {{ field.validation?.minLength }}.
+          </small>
+          <small *ngIf="form.get(field.name)?.errors?.['maxlength']" class="text-danger">
+            Maximum length is {{ field.validation?.maxLength }}.
+          </small>
+          <small *ngIf="form.get(field.name)?.errors?.['min']" class="text-danger">
+            Minimum value is {{ field.validation?.min }}.
+          </small>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Submit Button -->
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary px-4" [disabled]="form.invalid">
+        Add Product
+      </button>
+    </div>
+  </form>
+  
