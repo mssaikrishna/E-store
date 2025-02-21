@@ -92,7 +92,6 @@ export class SignupComponent {
   }
 
   showAlert(message: string, type: 'success' | 'danger' | 'warning') {
-    debugger
     if (this.dynamicHost) {
       const viewContainerRef = this.dynamicHost.viewContainerRef;
       viewContainerRef.clear();

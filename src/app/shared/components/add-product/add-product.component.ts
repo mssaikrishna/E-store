@@ -1,4 +1,3 @@
-// add-product.component.ts
 import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -16,7 +15,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, ReactiveFormsModule],
 })
 export class AddProductComponent {
-  @Output() productAdded = new EventEmitter<void>();
+  @Output() productAdded = new EventEmitter<string>();
   form: FormGroup;
   formConfig = productFormConfig;
 
@@ -45,8 +44,8 @@ export class AddProductComponent {
       const newProduct = this.form.value;
       newProduct.id = Date.now(); // Generate a unique ID for the product
       this.saveProductToLocalStorage(newProduct);
-      this.productAdded.emit(); // Notify parent to refresh the product list
-      this.form.reset(); // Reset the form
+      this.productAdded.emit('Product added successfully!');
+      this.form.reset(); 
     }
   }
 

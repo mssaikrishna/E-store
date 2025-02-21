@@ -1,13 +1,13 @@
 <div class="container mt-4">
   <h2>Admin Dashboard</h2>
 
-
+  <ng-container appDynamicHost></ng-container>
   <div class="card mt-4">
     <div class="card-header">
       <h4>Add Product</h4>
     </div>
     <div class="card-body">
-      <app-add-product (productAdded)="onProductAdded()"></app-add-product>
+      <app-add-product (productAdded)="onProductAdded($event)"></app-add-product>
     </div>
   </div>
 

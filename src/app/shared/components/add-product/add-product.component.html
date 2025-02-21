@@ -2,7 +2,6 @@
     <div class="row g-3">
       <div *ngFor="let field of formConfig" class="col-md-6">
         <label class="form-label fw-bold">{{ field.label }}</label>
-  
         <!-- Text & Number Input -->
         <input
           *ngIf="field.type === 'text' || field.type === 'number'"
