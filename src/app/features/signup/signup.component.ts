@@ -67,7 +67,6 @@ export class SignupComponent {
 
       // Check if the email is already taken
       if (this.authService.isEmailTaken(email)) {
-        // this.errorMessage = 'Email is already registered.';
         this.showAlert('Email is already registered.', 'danger');
 
         setTimeout(() => {
@@ -81,7 +80,7 @@ export class SignupComponent {
       const isRegistered = this.authService.signup(email, password, role);
       if (isRegistered) {
         this.showAlert('User registered successfully!', 'success');
-        // this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
         setTimeout(() => {
           this.dynamicHost.viewContainerRef.clear();
         }, 3000);
