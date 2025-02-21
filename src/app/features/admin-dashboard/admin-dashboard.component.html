@@ -37,14 +37,15 @@
               >
                 Promote to Admin
               </button>
-              <button
+              <!-- <button
                 *ngIf="user.role === 'admin'"
                 class="btn btn-sm btn-warning me-2"
                 (click)="demoteToUser(user.email)"
               >
                 Demote to User
-              </button>
+              </button> -->
               <button
+              *ngIf="user.role !== 'admin'"
                 class="btn btn-sm btn-danger"
                 (click)="deleteUser(user.email)"
               >
